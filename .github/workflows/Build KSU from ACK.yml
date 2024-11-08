@@ -60,7 +60,14 @@ jobs:
       if: inputs.ENABLE_KSU == true
       run: |
         cd $GITHUB_WORKSPACE
-        git clone https://github.com/tiann/KernelSU.git
+        git clone --depth 1 https://github.com/tiann/KernelSU.git
+        git clone --depth 1 -b gki-android12-5.10 https://gitlab.com/simonpunk/susfs4ksu.git
+        cp ./susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch ./KernelSU/
+        cp ./susfs4ksu/kernel_patches/50_add_susfs_in_gki-android12-5.10.patch android-kernel/common/
+        cp ./susfs4ksu/kernel_patches/fs/susfs.c android-kernel/common/fs/
+        cp ./susfs4ksu/kernel_patches/include/linux/susfs.h android-kernel/common/include/linux/
+        cd KernelSU && patch -p1 < 10_enable_susfs_for_ksu.patch && cd -
+        cd android-kernel/common && patch -p1 < 50_add_susfs_in_gki-android12-5.10.patch && cd -
         cd $GITHUB_WORKSPACE/android-kernel
         echo "[+] KernelSU setup"
         GKI_ROOT=$(pwd)
