@@ -70,7 +70,7 @@ jobs:
         cp ./susfs4ksu/kernel_patches/include/linux/susfs.h android-kernel/common/include/linux/
         cp ./susfs4ksu/kernel_patches/include/linux/sus_su.h android-kernel/common/include/linux/
         cd KernelSU && patch -p1 < 10_enable_susfs_for_ksu.patch && cd -
-        cd android-kernel/common && patch -p1 < 50_add_susfs_in_gki-android12-5.10.patch && cd -
+        cd android-kernel/common && patch -p1 < 50_add_susfs_in_gki-android13-5.15.patch && cd -
         cd $GITHUB_WORKSPACE/android-kernel
         echo "[+] KernelSU setup"
         GKI_ROOT=$(pwd)
