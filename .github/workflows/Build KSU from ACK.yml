@@ -66,6 +66,7 @@ jobs:
         cp ./susfs4ksu/kernel_patches/KernelSU/kernel/sucompat.h ./KernelSU/kernel
         cp ./susfs4ksu/kernel_patches/50_add_susfs_in_gki-android12-5.10.patch android-kernel/common/
         cp ./susfs4ksu/kernel_patches/fs/susfs.c android-kernel/common/fs/
+        cp ./susfs4ksu/kernel_patches/fs/sus_su.c android-kernel/common/fs/
         cp ./susfs4ksu/kernel_patches/include/linux/susfs.h android-kernel/common/include/linux/
         cp ./susfs4ksu/kernel_patches/include/linux/sus_su.h android-kernel/common/include/linux/
         cd KernelSU && patch -p1 < 10_enable_susfs_for_ksu.patch && cd -
