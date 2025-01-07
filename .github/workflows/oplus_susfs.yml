@@ -54,8 +54,8 @@ jobs:
         git config --global user.name "wstjf"
         git config --global user.email wstjf@users.noreply.github.com
         mkdir oneplus12_v && cd oneplus12_v
-        repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b ${{ inputs.TAG }} -m ${{ inputs.MFT }}.xml
-        repo sync -j$(nproc)
+        repo init --depth=1 --u https://github.com/OnePlusOSS/kernel_manifest.git -b ${{ inputs.TAG }} -m ${{ inputs.MFT }}.xml --repo-rev=v2.16
+        repo --trace sync -q -c -j$(nproc --all) --no-tags
         rm -rf ./kernel_platform/common/android/abi_gki_protected_exports_*
 
     - name: Setup KernelSU
