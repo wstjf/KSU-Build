@@ -4,12 +4,7 @@ on:
     inputs:
       TAG:
         required: true
-        type: choice
         description: 'Select Branch'
-        options:
-        - oneplus/sm8650
-        - oneplus/sm8550
-        - oneplus/sm8475
         default: 'oneplus/sm8650'
       ENABLE_KSU:
         required: true
