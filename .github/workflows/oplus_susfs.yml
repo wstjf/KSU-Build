@@ -5,6 +5,12 @@ on:
       TAG:
         required: true
         description: 'Select Branch'
+        options:
+        - oneplus/sm8650
+        - oneplus/sm7550
+        - oneplus/sm7675
+        - oneplus/sm8550
+        - oneplus/sm8750
         default: 'oneplus/sm8650'
       ENABLE_KSU:
         required: true
@@ -43,7 +49,7 @@ jobs:
         git config --global user.name "wstjf"
         git config --global user.email wstjf@users.noreply.github.com
         mkdir oneplus12_v && cd oneplus12_v
-        repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b ${{ inputs.TAG }} -m oneplus12_v.xml
+        repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b ${{ inputs.TAG }} -m oneplus_ace3_pro.xml
         repo sync -j$(nproc)
         rm -rf ./kernel_platform/common/android/abi_gki_protected_exports_*
 
