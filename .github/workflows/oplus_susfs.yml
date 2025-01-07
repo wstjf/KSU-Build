@@ -4,6 +4,7 @@ on:
     inputs:
       TAG:
         required: true
+        type: choice
         description: 'Select Branch'
         options:
         - oneplus/sm8650
