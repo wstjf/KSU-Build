@@ -13,6 +13,10 @@ on:
         - oneplus/sm8550
         - oneplus/sm8750
         default: 'oneplus/sm8650'
+      MFT:
+        required: true
+        description: 'Select Manifest'
+        default: 'oneplus_ace3_pro'
       ENABLE_KSU:
         required: true
         type: boolean
@@ -50,7 +54,7 @@ jobs:
         git config --global user.name "wstjf"
         git config --global user.email wstjf@users.noreply.github.com
         mkdir oneplus12_v && cd oneplus12_v
-        repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b ${{ inputs.TAG }} -m oneplus_ace3_pro.xml
+        repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b ${{ inputs.TAG }} -m ${{ inputs.MFT }}.xml
         repo sync -j$(nproc)
         rm -rf ./kernel_platform/common/android/abi_gki_protected_exports_*
 
