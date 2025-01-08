@@ -126,12 +126,11 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         git clone https://github.com/TheWildJames/AnyKernel3.git -b android14-5.15
-        cp ./oneplus12_v/kernel_platform/out/dist/Image ./AnyKernel3/
-        cd AnyKernel3
-        zip -r "../kernel-oneplus-${{ inputs.TAG }}-$(date +'%Y%m%d').zip" ./*
+        cp ./oneplus12_v/out/dist/Image ./AnyKernel3/
+        rm -rf ./AnyKernel3/.git
 
     - name: Upload AnyKernel3
       uses: actions/upload-artifact@v4
       with:
         name: OnePlus-${{ inputs.TAG }}-KernelSU-SUSFS
-        path: ./kernel-oneplus-*.zip
+        path: ./AnyKernel3/*
