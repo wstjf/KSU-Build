@@ -126,6 +126,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         git clone https://github.com/TheWildJames/AnyKernel3.git -b android14-5.15
+        ls ./oneplus12_v/out/dist/
         cp ./oneplus12_v/out/dist/Image ./AnyKernel3/
         rm -rf ./AnyKernel3/.git
 
